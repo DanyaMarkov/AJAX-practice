@@ -4,14 +4,22 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Подключаю Jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+
+    <!-- Подключаю библиотеку Axios -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
     <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
 
 <body class="container">
+    <h3>Взаимодействие с API с помощью Jquery</h3>
+
     <div class="cats-facts">
-        <div id="get"> Price </div>
+        <div id="get"> А где факты о котиках? </div>
         <div>
             <button id="updateButton">Новый факт</button>
         </div>
@@ -19,13 +27,40 @@
 
     <div class="dj-pictures">
         <div class="inputs">
+
             <label>Количество картинок</label>
             <input id="inputCountImages" type="number" value="3">
         </div>
         <div>
+            <input id="getImgs" type="button" value="Получить картинки">
+        </div>
+
+        <div class="outputImages"></div>
+    </div>
+
+    <h3>Взаимодействие с API с помощью Axios</h3>
+    <div class="axios">
+        <div class="inputs">
+            <label>Количество картинок</label>
+            <input id="inputCountPictures" type="number" value="1">
+        </div>
+        <div>
             <input id="getPics" type="button" value="Получить картинки">
         </div>
+        <div class="outputPictures"></div>
+    </div>
+
+    <div class="todo-list">
+        <div>
+            <label>Добавление задачи</label>
+            <input type="button" value="Добавить задание" id="postTask">
+            <input id="inputTask" type="text" value="">
+        </div>
         
+
+        <input type="button" value="Получить задания" id="getTasks">
+
+        <ul class="tasks-result"></ul>
     </div>
 
 

@@ -1,38 +1,75 @@
-function getFacts() {
-    $.ajax("https://catfact.ninja/fact", {
-        success: function (data) {
-            document.getElementById("get").innerHTML = "Вау, прикольный факт:" + "<br/> <br/>" + data.fact;
-        }
-    });
+
+// Факты
+document.getElementById("updateButton").addEventListener('click', () => {
+    getFacts(onFactReceived);
+});
+
+let onFactReceived = (data) => {
+    document.getElementById("get").innerHTML = `Да вот же они!: <br/> <br/> ${data.fact}`;
 }
 
-getFacts();
-
-document.getElementById("updateButton").addEventListener('click', () => { getFacts() });
-
-
-function getPictures() {
-
+//Картинки на Jquery
+document.getElementById("getImgs").addEventListener('click', () => {
     let countOfImages = document.getElementById('inputCountImages').value;
-    let randomPages = Math.floor(Math.random() * 3) + 1;
+    const promise = getImages(countOfImages);
+    promise
+        .then(onImagesReceived)
+});
 
-    $.ajax(`https://repetitora.net/api/JS/Images?page=${randomPages}&count=${countOfImages}`, {
-        success: function (data) {
-            data.forEach(el => {
-                const img = document.createElement("img");
-                img.src = el.thumbnail;
-                document.querySelector("body").appendChild(img);
-                //document.classSelector("dj-pictures").appendChild(img);
-            });
-            console.log("Запрос идет")
-        }
+
+let onImagesReceived = (data) => {
+    data.forEach(el => {
+        const img = document.createElement("img");
+        img.src = el.thumbnail;
+        document.querySelector(".outputImages").appendChild(img);
     });
-    console.log("Функция")
 }
 
 
-getPictures();
+//Картинки на Axios
+document.getElementById("getPics").addEventListener('click', () => {
+    let countOfPictures = document.getElementById('inputCountPictures').value;
+    const promise = getPictures(countOfPictures);
+    promise
+        .then(onPicturesReceived)
+});
 
-document.getElementById("getPics").addEventListener('click', () => { getPictures() });
 
+let onPicturesReceived = (data) => {
+    data.forEach(el => {
+        const img = document.createElement("img");
+        img.src = el.thumbnail;
+        document.querySelector(".outputPictures").appendChild(img);
+        //document.classSelector("dj-pictures").appendChild(img);
+    });
+    console.log("Запрос идет");
+}
 
+//ToDoList на Axios
+
+getTasksButton = document.querySelector("#getTasks");
+
+getTasksButton.addEventListener('click', () => {
+    const promise = getTasks();
+    promise.then(onTasksReceived)
+});
+
+let onTasksReceived = (tasks) => {
+    document.querySelector(".tasks-result").innerHTML = "";
+    tasks.forEach(task => {
+        const li = document.createElement("li");
+        li.innerHTML = task.title;
+        li.dataset.id = task.id;
+        document.querySelector(".tasks-result").appendChild(li);
+    });
+    console.log("Запрос идет");
+}
+
+//postTask
+postTaskButton = document.querySelector("#postTask");
+
+postTaskButton.addEventListener('click', () => {
+    let textOfTask = document.getElementById('inputTask').value;
+    const promise = createTask(textOfTask);
+    promise.then(onTasksReceived)
+});

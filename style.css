@@ -1,3 +1,7 @@
+body {
+  font-size: 20px;
+}
+
 .container {
   max-width: 1200px;
   border: 0px solid #222;
@@ -12,7 +16,7 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  height: 130px;
+  height: 140px;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
@@ -23,14 +27,28 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
+  -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+      -ms-flex-direction: row;
+          flex-direction: row;
   height: 40px;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
   margin: 20px;
+}
+
+.outputImages {
+  margin: 30px;
+  border: black 2px solid;
+  max-width: 35%;
+  width: 35%;
+}
+
+.outputPictures {
+  margin: 30px;
+  border: black 2px solid;
+  max-width: 35%;
+  width: 35%;
 }
 /*# sourceMappingURL=style.css.map */
