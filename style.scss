@@ -1,0 +1,20 @@
+.container {
+    max-width: 1200px;
+    border: 0px solid #222;
+    margin: 0px auto;
+}
+
+.cats-facts {
+    display: flex;
+    flex-direction: column;
+    height: 130px;
+    justify-content: space-between;
+    margin: 20px;
+}
+.dj-pictures {
+    display: flex;
+    flex-direction: column;
+    height: 40px;
+    justify-content: space-between;
+    margin: 20px;
+}
